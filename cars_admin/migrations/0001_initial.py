@@ -15,6 +15,22 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='Partner',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=150, verbose_name='nome completo')),
+                ('document_id', models.CharField(max_length=150, unique=True, verbose_name='numero do documento')),
+                ('reg_id', models.CharField(blank=True, default='', max_length=50, null=True, verbose_name='matrícula')),
+                ('slug', models.SlugField(default='', max_length=150, verbose_name='slug')),
+                ('user', models.ForeignKey(blank=True, db_column='user', null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'verbose_name': 'registro de proprietário',
+                'verbose_name_plural': 'registros de proprietários',
+                'ordering': ['name'],
+            },
+        ),
+        migrations.CreateModel(
             name='Brand',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -57,22 +73,6 @@ class Migration(migrations.Migration):
                 'verbose_name': 'cadastro de veículo',
                 'verbose_name_plural': 'cadastros de veículos',
                 'ordering': ['user'],
-            },
-        ),
-        migrations.CreateModel(
-            name='Partner',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=150, verbose_name='nome completo')),
-                ('document_id', models.CharField(max_length=150, unique=True, verbose_name='numero do documento')),
-                ('reg_id', models.CharField(blank=True, default='', max_length=50, null=True, verbose_name='matrícula')),
-                ('slug', models.SlugField(default='', max_length=150, verbose_name='slug')),
-                ('user', models.ForeignKey(blank=True, db_column='user', null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'verbose_name': 'registro de proprietário',
-                'verbose_name_plural': 'registros de proprietários',
-                'ordering': ['name'],
             },
         ),
     ]
