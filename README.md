@@ -15,4 +15,4 @@ como os padrões definidos na especificação HTTP para esses códigos.
 ### PASSOS
 
 * É preciso ter o docker e o docker-compose instalados na máquina
-* docker-compose up --build -d - Rode este comando no terminal na pasta onde o repositório foi clonado  
+* docker-compose up --build -d  <b>Rode este comando no terminal na pasta onde o repositório foi clonado<b>  
